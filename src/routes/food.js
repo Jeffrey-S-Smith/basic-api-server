@@ -1,42 +1,41 @@
 'use strict';
 
-const express = require('express');
-const { FoodModel } = require('../models');
+const { FoodModel } = require('./../models');
+// const express = require('express');
+// const router = express.Router();
 
-const router = express.Router();
 
-router.get(`/`, (req,res)=>{
-  res.send('hello');
-});
+const foodrouter = {
+  
 
-router.post('/food', async (req, res, next) => {
-  let food = req.body;
-  let response = await FoodModel.create(food);
-  res.status(200).send(response);
-});
+  getFoodItems: (request, response) => {
+    FoodModel.findAll()
+      .then(foodRecords => response.status(200).send(foodRecords))
+      .catch(error => console.log(error));
+  },
 
-router.get('/food', async (req, res, next) => {
-  let allFoods = await FoodModel.readAll();
-  res.status(200).send(allFoods);
-});
+  getFoodItem: (request, response) => {
+    FoodModel.findOne({ where: { id: request.params.id } })
+      .then(foodRecord => response.status(200).send(foodRecord))
+      .catch(error => console.log(error));
+  },
 
-router.get('/food/:id', async (req, res, next) => {
-  let { id } = req.params;
-  let oneFood = await FoodModel.readAll();
-  res.status(200).send(oneFood);
-});
+  createFoodItem: (request, response) => {
+    FoodModel.create(request.body)
+      .then(foodRecord => response.status(200).send(foodRecord))
+      .catch(error => console.log(error));
+  },
 
-router.put('/food/:id', async (req, res, next) => {
-  let { id } = req.params;
-  await FoodModel.update(req.body, {where: { id }});
-  let updatedFood = await FoodModel.findOne({where: { id }});
-  res.status(200).send(updatedFood);
-});
+  updateFoodItem: (request, response) => {
+    FoodModel.update(request.body, { where: { id: request.params.id } })
+      .then(foodRecord => response.status(200).send(foodRecord))
+      .catch(error => console.log(error));
+  },
 
-router.delete('/food/:id', async (req, res, next) => {
-  let { id } = req.params;
-  let deletedFood = await FoodModel.delete(id);
-  res.status(200).send(deletedFood);
-});
+  deleteFoodItem: async (request, response) => {
+    await FoodModel.destroy({ where: { id: request.params.id } });
+    response.status(200).send(`Successfully deleted id ${request.params.id}`);
+  },
+};
 
-module.exports = router;
+module.exports = foodrouter;
