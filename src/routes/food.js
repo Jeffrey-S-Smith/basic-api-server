@@ -1,9 +1,16 @@
 'use strict';
 
 const { FoodModel } = require('./../models');
-// const express = require('express');
+const express = require('express');
 // const router = express.Router();
 
+// router.get('/food', (res, req, next) => {
+//   res.send
+// });
+// router.get('/food/:id, ');
+// router.post('/food');
+// router.put(/food/:id',);
+// router.delete(/food/:id');
 
 const foodrouter = {
   
@@ -39,3 +46,7 @@ const foodrouter = {
 };
 
 module.exports = foodrouter;
+
+//collection 
+
+//

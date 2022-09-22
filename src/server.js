@@ -5,10 +5,11 @@ const foodRouter = require('./routes/food');
 const logger = require('./middleware/logger');
 const validator = require('./middleware/validator');
 
+
 const app = express();
+app.use(express.json());
 
 app.use(logger);
-app.use(express.json());
 app.use('/food', validator, foodRouter);
 
 // my error messages
@@ -40,3 +41,5 @@ module.exports = {
   },
   app,
 };
+
+//
