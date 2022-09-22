@@ -5,6 +5,9 @@ const { FoodModel } = require('../models');
 
 const router = express.Router();
 
+router.get(`/`, (req,res)=>{
+  res.send('hello');
+});
 
 router.post('/food', async (req, res, next) => {
   let food = req.body;
