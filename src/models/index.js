@@ -1,11 +1,10 @@
 'use strict';
 const foodSchema = require('./food.js');
-
 const Collection = require('./collection-class.js');
-
 const { Sequelize, DataTypes } = require('sequelize');
 
 const DATABASE_URL = process.env.NODE_ENV === 'test' ? 'sqlite::memory:' : process.env.DATABASE_URL;
+
 
 let herokuOptions = {
   dialectOptions: {
@@ -31,6 +30,7 @@ let herokuOptions = {
 let sequelize = new Sequelize(DATABASE_URL, herokuOptions);
 
 const FoodModel = foodSchema(sequelize, DataTypes);
+
 
 
 module.exports = {

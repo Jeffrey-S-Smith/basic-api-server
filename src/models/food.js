@@ -2,7 +2,7 @@
 
 module.exports = (sequelize, DataTypes) => {
 
-  return sequelize.define('food', {
+  return sequelize.define('/food', {
     calories: {
       type: DataTypes.INTEGER,
       allowNull: true,
@@ -25,4 +25,5 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 };
+
 

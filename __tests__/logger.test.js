@@ -1,12 +1,14 @@
 'use strict';
-const app = require('./../src/server');
+const server = require('./../src/server');
 const supertest = require('supertest');
 
-const request = supertest(app);
+const request = supertest(server.app);
 
-describe('Testing if request query validator works', () => {
-  test('Should respond with 200 if no name in search query', async () => {
-    const response = await request.get('/person');
+describe('Testing logger', () => {
+  test('Should console log something', async () => {
+    jest.spyOn(console, 'log');
+    const response = await request.get('/food');
     expect(response.status).toEqual(200);
+    expect(console.log).toHaveBeenCalledWith('GET /food');
   });
 });

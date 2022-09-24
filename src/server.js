@@ -1,7 +1,5 @@
 'use strict';
 
-'use strict';
-
 const express = require('express');
 const Food = require('./routes/food');
 const logger = require('./middleware/logger');
