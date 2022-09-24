@@ -11,7 +11,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    ingredients: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    isSpicy: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
   });
 };
 
-//
+
