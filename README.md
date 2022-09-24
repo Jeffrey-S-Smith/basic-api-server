@@ -25,3 +25,15 @@ UML Reference
 ![Lab03](img/lab3.png)
 This should be the first thing you do when beginning work on a lab assignment.
 Draw the process/data flow of your application and map it to the code you will need to write or evaluate/fix.
+
+### Routes
+
+GET : /food
+
+GET : /food/:id
+
+POST : /food (body {"foodName" : "food name"})
+
+PUT : /food/:id (body {"foodName" : "updated food name"})
+
+DELETE: /food/:id
